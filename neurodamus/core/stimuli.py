@@ -167,7 +167,7 @@ class SignalSource:
 
         stim1 = Neuron.h.Vector(len(tvec))
 
-        stim1.sin(freq, 0.0, step)
+        stim1.sin(freq1, 0.0, step)
 
         self.stim_vec2.append(stim1)
         self.stim_vec2.append(base_amp)
