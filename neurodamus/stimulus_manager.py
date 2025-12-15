@@ -829,11 +829,17 @@ class Extracellular(BaseStim):
 
                 # inject Extracellular signal
 
-                es.attach_to(cell, sc.sec, x)
+                _, stim, pos = es.attach_to(cell, sc.sec, x)
+
+                posList[sec_id] = pos
+                fields[sec_id] = stim
 
         self.stimList.append(es)  # save source
 
         Extracellular.stimCount += 1  # increment global count
+
+        np.save('positions.npy',posList)
+        np.save('fields.npy',fields)
 
     def parse_check_all_parameters(self, stim_info: dict):
 
