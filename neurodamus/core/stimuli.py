@@ -509,33 +509,17 @@ class ElectrodeSource:
             usually the soma baricenter
     """
 
-    def __init__(
-        self, base_amp, delay, duration, fields, ramp_up_time, ramp_down_time, dt, base_position
-    ):
-        self.time_vec = Nd.h.Vector()  # Time points for stimulus waveform
-        self._cur_t = 0
-        self._base_amp = base_amp
-        self._delay = delay
+    def __init__(self, delay, duration, fields, ramp_up_time, ramp_down_time, dt):
+        super().__init__(base_amp=0, delay=delay)
         self.fields = fields
         self.duration = duration
         self.base_position = base_position
         self.dt = dt
         self.ramp_up_time = ramp_up_time
         self.ramp_down_time = ramp_down_time
-        self.segs_stim_vec = {}  # Map of {segment: stimulus_vector} for each cell segment
-        # for delay, add cur_t as the first point, then advance cur_t
-        if delay > 0:
-            self.time_vec.append(self._cur_t)
-            self._cur_t = delay
-        self.signals = self.add_cosines()
 
-    def delay(self, duration):
-        """Increments the ref time so that the next created signal is delayed"""
-        # NOTE: We rely on the fact that Neuron allows "instantaneous" changes
-        # and made all signal shapes return to base_amp. Therefore delay() doesn't
-        # need to introduce any point to avoid interpolation.
-        self._cur_t += duration
-        return self
+    def update_base_position(self, base_position):
+        self.base_position = base_position
 
     def add_cosines(self):
         """Add multiple cosinusoidal signals
