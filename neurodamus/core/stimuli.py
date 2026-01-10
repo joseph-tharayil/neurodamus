@@ -141,7 +141,7 @@ class SignalSource:
         self._add_point(base_amp)  # Last point
         return self
 
-    def add_sines(self, total_duration, freq, freq1=0, step=10, **kw):
+    def add_sines(self, total_duration, freq, freq1=0, step=.25, **kw):
         """ Builds a sinusoidal signal from a combination of sines.
         Args:
             total_duration: Total duration, in ms, including ramp-up and ramp-down periods
