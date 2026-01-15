@@ -796,25 +796,24 @@ class ElectrodeSource(SignalSource):
 
     def attach_to(self, cell, section, x):
 
-        self.extracellulars.append(self.time_vec)
+        #self.extracellulars.append(self.time_vec)
 
         section.insert('extracellular')
 
-        seg = section(x)
+        #seg = section(x)
 
-        scaleFac0, scaleFac1, segposition = self.get_scale_factor(cell, section, x)  # Calculates the potential relative to the soma for the given segment, for both of the E fields
+        #scaleFac0, scaleFac1, segposition = self.get_scale_factor(cell, section, x)  # Calculates the potential relative to the soma for the given segment, for both of the E fields
 
-        stim_vec_final = self.stim_vec.c()     # clone to make a new Vector
-        stim_vec_final.mul(scaleFac0)          # scale in place
-        stim_vec_final.add(self.stim_vec2.c().mul(scaleFac1))  # add scaled clone of stim_vec2
+        #stim_vec_final = self.stim_vec.c()     # clone to make a new Vector
+        #stim_vec_final.mul(scaleFac0)          # scale in place
+        #stim_vec_final.add(self.stim_vec2.c().mul(scaleFac1))  # add scaled clone of stim_vec2
 
-        stim_vec_final = self.apply_ramp(stim_vec_final)
+        #stim_vec_final = self.apply_ramp(stim_vec_final)
 
-        self.extracellulars.append(stim_vec_final)
-        self.extracellulars.append(seg.extracellular)
-        self.extracellulars.append(seg.extracellular.e)
+        #self.extracellulars.append(stim_vec_final)
+        #self.extracellulars.append(seg.extracellular)
+        #self.extracellulars.append(seg.extracellular.e)
 
-        out = stim_vec_final.play(seg.extracellular._ref_e, self.time_vec, 1)
-        self.extracellulars.append((out))
+        #self.extracellulars.append((out))
 
         return None, np.max(stim_vec_final.to_python()), segposition
