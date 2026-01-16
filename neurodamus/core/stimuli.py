@@ -518,6 +518,8 @@ class ElectrodeSource:
         self.ramp_up_time = ramp_up_time
         self.ramp_down_time = ramp_down_time
 
+        self.extracellulars = []
+
     def update_base_position(self, base_position):
         self.base_position = base_position
 
@@ -541,15 +543,21 @@ class ElectrodeSource:
         return res
 
     def compute_signals(self, inject_position):
-        amplitudes = self.uniform_potentials(inject_position)
+        #amplitudes = self.uniform_potentials(inject_position)
         # scale each signal by amplitude, and sum together to get the final stim_vec
-        stim_vec_sum = np.sum(np.array(amplitudes)[:, None] * np.array(self.signals), axis=0)
-        self.apply_ramp(stim_vec_sum, self.dt)
-        # for delay, insert base_amp at the beginning of stim_vec for the 1st point in time_vec
-        if self._delay > 0:
-            stim_vec_sum = np.append(self._base_amp, stim_vec_sum)
-        stim_vec_sum = np.append(stim_vec_sum, self._base_amp)
-        return Nd.h.Vector(stim_vec_sum)
+        #stim_vec_sum = np.sum(np.array(amplitudes)[:, None] * np.array(self.signals), axis=0)
+        #self.apply_ramp(stim_vec_sum, self.dt)
+        #self.stim_vec.append(Nd.h.Vector(stim_vec_sum))
+        #self._add_point(self._base_amp)  # Last point
+
+        section.insert("extracellular")
+        #seg = section(x)
+        #out = self.stim_vec.play(seg.extracellular._ref_e, self.time_vec, 1)
+
+        #self.extracellulars.append(stim_vec_final)
+        #self.extracellulars.append(seg.extracellular)
+        #self.extracellulars.append(seg.extracellular.e)
+        #self.extracellulars.append(out)
 
     def apply_ramp(self, signal_vec, step):
         """Apply signal ramp up and down
