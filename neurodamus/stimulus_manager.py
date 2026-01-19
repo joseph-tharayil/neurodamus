@@ -16,7 +16,7 @@ Also, when instantiated by the framework, __init__ is passed three arguments
 
 """
 
-from __future__ import annotations
+# from __future__ import annotations
 
 import logging
 import re
@@ -914,7 +914,6 @@ class SpatiallyUniformEField(BaseStim):
                 segment = sc.sec(target_point_list.x[sec_id])
                 es.segs_stim_vec[segment] = stim_vec
 
-<<<<<<< HEAD
             if gid in self.stimList:
                 # Consolidate with existing stimulus
                 cur_es = self.stimList[gid]
@@ -1017,9 +1016,7 @@ class SpatiallyUniformEField(BaseStim):
                     if not section.has_membrane("extracellular"):
                         section.insert("extracellular")
                     stim_vec.play(segment.extracellular._ref_e, es.time_vec, 1)
-=======
         self.stimList.append(es)  # save Extracellular field
->>>>>>> d6b458d (Saves es only once)
 
     def parse_check_all_parameters(self, stim_info: dict):
         self.duration = float(stim_info["Duration"])  # duration [ms]
