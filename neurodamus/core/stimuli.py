@@ -513,7 +513,6 @@ class ElectrodeSource(SignalSource):
         super().__init__(base_amp=0, delay=delay)
         self.fields = fields
         self.duration = duration
-        self.base_position = base_position
         self.dt = dt
         self.ramp_up_time = ramp_up_time
         self.ramp_down_time = ramp_down_time
