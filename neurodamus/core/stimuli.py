@@ -493,7 +493,7 @@ class ConductanceSource(SignalSource):
         )
 
 
-class ElectrodeSource:
+class ElectrodeSource(SignalSource):
     """Constructs an extracellular potential field as the sum of multiple user-defined e-fields,
     and applies the resulting signal to the segment's e_extracellular.
 

@@ -879,16 +879,6 @@ class SpatiallyUniformEField(BaseStim):
             soma_global_position = np.array(all_seg_points[soma.name()]).mean(axis=0)
             soma_local_position = np.array(local_seg_points[soma.name()]).mean(axis=0)
             # create an ElectrodeSource object per cell
-            es = ElectrodeSource(
-                base_amp=0,
-                delay=self.delay,
-                duration=self.duration,
-                fields=self.fields,
-                ramp_up_time=self.ramp_up_time,
-                ramp_down_time=self.ramp_down_time,
-                dt=self.dt,
-                base_position=soma_global_position,
-            )
 
             es.update_base_position(soma_global_position)
 
