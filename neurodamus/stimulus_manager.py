@@ -30,9 +30,9 @@ from .core.configuration import ConfigurationError, SimConfig
 from .core.stimuli import ConductanceSource, CurrentSource, ElectrodeSource
 from .utils.logging import log_verbose
 
-if TYPE_CHECKING:
-    from .target_manager import TargetPointList, TargetSpec
-    from .utils import compat
+#if TYPE_CHECKING:
+from .target_manager import TargetPointList, TargetSpec
+from .utils import compat
 
 
 class StimulusManager:
