@@ -820,4 +820,4 @@ class ElectrodeSource(SignalSource):
         print(stim_vec_final.as_numpy())
         self.extracellulars.append((out))
 
-        return None, np.max(stim_vec_final.to_python()), segposition
+        return None, stim_vec_final.to_python(), segposition
