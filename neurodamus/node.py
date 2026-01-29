@@ -355,7 +355,6 @@ class Node:
         self._spike_vecs = []
         self._spike_populations = []
         Nd.execute("cvode = new CVode()")
-        Nd.cvode.use_mxb(1)
         SimConfig.init(config_file, options)
 
         if SimConfig.use_coreneuron:
