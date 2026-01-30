@@ -765,6 +765,7 @@ class ElectrodeSource(SignalSource):
         if 'soma' in section.name():
 
             segpositions = self.get_soma_position(section)
+            segpositions = cell.local_to_global_coord_mapping(segpositions[np.newaxis]).squeeze()
             self.soma_position = segpositions
         else:
 
@@ -773,7 +774,7 @@ class ElectrodeSource(SignalSource):
             else:
                 segpositions = self.get_positions(section, x)
 
-        segpositions = cell.local_to_global_coord_mapping(segpositions[np.newaxis]).squeeze()
+            segpositions = cell.local_to_global_coord_mapping(segpositions[np.newaxis]).squeeze()
 
         scaleFactor0, scaleFactor1 = self.uniform_potentials(segpositions)
 
