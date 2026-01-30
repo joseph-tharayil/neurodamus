@@ -681,48 +681,48 @@ class ElectrodeSource(SignalSource):
         if self.axon1 < 4:
 
             ### Adds soma position to the list of coordinates
-            xpos.append(self.soma_position[0])
-            zpos.append(self.soma_position[2])
-            ypos.append(self.soma_position[1])
+            xpos.append(self.local_soma_position[0])
+            zpos.append(self.local_soma_position[2])
+            ypos.append(self.local_soma_position[1])
             lens.append(0)
 
             # We assume that the axon is oriented along the z-axis, so we maintain the x- and y-coordinates of the soma
-            xpos.append(self.soma_position[0])
-            zpos.append(self.soma_position[2])
+            xpos.append(self.local_soma_position[0])
+            zpos.append(self.local_soma_position[2])
             lens.append(1)
-            ypos.append(self.soma_position[1] - 30)  # If this is the first axonal segment, then it is 30 um displaced along the z-axis
+            ypos.append(self.local_soma_position[1] - 30)  # If this is the first axonal segment, then it is 30 um displaced along the z-axis
 
             self.axon1 += 1
 
         elif self.axon2 < 4:
 
             ### Adds soma position to the list of coordinates
-            xpos.append(self.soma_position[0])
-            zpos.append(self.soma_position[2])
-            ypos.append(self.soma_position[1] - 30)
+            xpos.append(self.local_soma_position[0])
+            zpos.append(self.local_soma_position[2])
+            ypos.append(self.local_soma_position[1] - 30)
             lens.append(0)
 
             # We assume that the axon is oriented along the z-axis, so we maintain the x- and y-coordinates of the soma
-            xpos.append(self.soma_position[0])
-            zpos.append(self.soma_position[2])
+            xpos.append(self.local_soma_position[0])
+            zpos.append(self.local_soma_position[2])
             lens.append(1)
-            ypos.append(self.soma_position[1] - 60)  # If this is the first axonal segment, then it is 60 um displaced along the z-axis
+            ypos.append(self.local_soma_position[1] - 60)  # If this is the first axonal segment, then it is 60 um displaced along the z-axis
 
             self.axon2 += 1
 
         else:
 
             ### Adds soma position to the list of coordinates
-            xpos.append(self.soma_position[0])
-            zpos.append(self.soma_position[2])
-            ypos.append(self.soma_position[1] - 60)
+            xpos.append(self.local_soma_position[0])
+            zpos.append(self.local_soma_position[2])
+            ypos.append(self.local_soma_position[1] - 60)
             lens.append(0)
 
             # We assume that the axon is oriented along the z-axis, so we maintain the x- and y-coordinates of the soma
-            xpos.append(self.soma_position[0])
-            zpos.append(self.soma_position[2])
+            xpos.append(self.local_soma_position[0])
+            zpos.append(self.local_soma_position[2])
             lens.append(1)
-            ypos.append(self.soma_position[1] - 1060)  # If this is the first myelinated segment, then it is 30 um displaced along the z-axis
+            ypos.append(self.local_soma_position[1] - 1060)  # If this is the first myelinated segment, then it is 30 um displaced along the z-axis
 
             self.axon3 += 1
 
@@ -765,6 +765,7 @@ class ElectrodeSource(SignalSource):
         if 'soma' in section.name():
 
             segpositions = self.get_soma_position(section)
+            self.local_soma_position = segpositions
             segpositions = cell.local_to_global_coord_mapping(segpositions[np.newaxis]).squeeze()
             self.soma_position = segpositions
         else:
