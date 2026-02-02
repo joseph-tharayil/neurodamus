@@ -815,8 +815,6 @@ class Extracellular(BaseStim):
                             self.Ex_1, self.Ey_1, self.Ez_1, self.frequency1,
                             self.ramp_up_time, self.ramp_down_time)
 
-        positions = np.load('weji_seg_positions.npy')
-        positionIdx = 0
 
         for tpoint_list in tpoints:
 
@@ -832,8 +830,7 @@ class Extracellular(BaseStim):
 
                 # inject Extracellular signal
 
-                _, stim, pos = es.attach_to(cell, sc.sec, x,positions[positionIdx])
-                positionIdx += 1
+                _, stim, pos = es.attach_to(cell, sc.sec, x)
 
                 posList[sec_id] = pos
                 fields[sec_id] = stim

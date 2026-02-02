@@ -760,7 +760,7 @@ class ElectrodeSource(SignalSource):
 
         return hocVector
 
-    def get_scale_factor(self, cell, section, x, position):
+    def get_scale_factor(self, cell, section, x):
 
         if 'soma' in section.name():
 
@@ -777,7 +777,7 @@ class ElectrodeSource(SignalSource):
 
             segpositions = cell.local_to_global_coord_mapping(segpositions[np.newaxis]).squeeze()
 
-        scaleFactor0, scaleFactor1 = self.uniform_potentials(position)
+        scaleFactor0, scaleFactor1 = self.uniform_potentials(segpositions)
 
         return scaleFactor0, scaleFactor1, segpositions
 
@@ -796,7 +796,7 @@ class ElectrodeSource(SignalSource):
 
         return scaleFactor0, scaleFactor1
 
-    def attach_to(self, cell, section, x, position):
+    def attach_to(self, cell, section, x):
 
         self.extracellulars.append(self.time_vec)
 
@@ -804,7 +804,7 @@ class ElectrodeSource(SignalSource):
 
         seg = section(x)
 
-        scaleFac0, scaleFac1, segposition = self.get_scale_factor(cell, section, x, position)  # Calculates the potential relative to the soma for the given segment, for both of the E fields
+        scaleFac0, scaleFac1, segposition = self.get_scale_factor(cell, section, x)  # Calculates the potential relative to the soma for the given segment, for both of the E fields
 
         stim_vec_final = self.stim_vec.c()     # clone to make a new Vector
         stim_vec_final.mul(scaleFac0)          # scale in place
