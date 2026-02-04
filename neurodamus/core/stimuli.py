@@ -698,15 +698,15 @@ class ElectrodeSource(SignalSource):
 
             ### Adds soma position to the list of coordinates
             xpos.append(self.local_soma_position[0])
-            zpos.append(self.local_soma_position[2])
-            ypos.append(self.local_soma_position[1] - 30)
+            ypos.append(self.local_soma_position[1])
+            zpos.append(self.local_soma_position[2] - 30)
             lens.append(0)
 
             # We assume that the axon is oriented along the z-axis, so we maintain the x- and y-coordinates of the soma
             xpos.append(self.local_soma_position[0])
-            zpos.append(self.local_soma_position[2])
+            ypos.append(self.local_soma_position[1])
             lens.append(1)
-            ypos.append(self.local_soma_position[1] - 60)  # If this is the first axonal segment, then it is 60 um displaced along the z-axis
+            zpos.append(self.local_soma_position[2] - 60)  # If this is the first axonal segment, then it is 60 um displaced along the z-axis
 
             self.axon2 += 1
 
@@ -714,15 +714,15 @@ class ElectrodeSource(SignalSource):
 
             ### Adds soma position to the list of coordinates
             xpos.append(self.local_soma_position[0])
-            zpos.append(self.local_soma_position[2])
-            ypos.append(self.local_soma_position[1] - 60)
+            ypos.append(self.local_soma_position[1])
+            zpos.append(self.local_soma_position[2] - 60)
             lens.append(0)
 
             # We assume that the axon is oriented along the z-axis, so we maintain the x- and y-coordinates of the soma
             xpos.append(self.local_soma_position[0])
-            zpos.append(self.local_soma_position[2])
+            ypos.append(self.local_soma_position[1])
             lens.append(1)
-            ypos.append(self.local_soma_position[1] - 1060)  # If this is the first myelinated segment, then it is 30 um displaced along the z-axis
+            zpos.append(self.local_soma_position[2] - 1060)  # If this is the first myelinated segment, then it is 30 um displaced along the z-axis
 
             self.axon3 += 1
 
