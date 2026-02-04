@@ -678,7 +678,7 @@ class ElectrodeSource(SignalSource):
         zpos = []
         lens = []
 
-        if self.axon1 < 4:
+        if self.axon1 < 5:
 
             ### Adds soma position to the list of coordinates
             xpos.append(self.local_soma_position[0])
@@ -694,7 +694,7 @@ class ElectrodeSource(SignalSource):
 
             self.axon1 += 1
 
-        elif self.axon2 < 4:
+        elif self.axon2 < 5:
 
             ### Adds soma position to the list of coordinates
             xpos.append(self.local_soma_position[0])
