@@ -989,11 +989,11 @@ class SpatiallyUniformEField(BaseStim):
         if axon_index > 1:
             raise ValueError("More than 2 axon sections exist!")
         xpos = [soma_position[0], soma_position[0]]
-        ypos = [
-            soma_position[1] - 30 * int(axon_index),
-            soma_position[1] - 30 * int(axon_index + 1),
+        zpos = [
+            soma_position[2] - 30 * int(axon_index),
+            soma_position[2] - 30 * int(axon_index + 1),
         ]
-        zpos = [soma_position[2], soma_position[2]]
+        ypos = [soma_position[1], soma_position[1]]
         lens = [0, 1]
 
         # Interpolate the coordinates for the given location x along the segment
@@ -1013,11 +1013,11 @@ class SpatiallyUniformEField(BaseStim):
         if myelin_index > 0:
             raise ValueError("More than 1 myelin section exist!")
         xpos = [soma_position[0], soma_position[0]]
-        ypos = [
-            (soma_position[1] - 60) - 1000 * int(myelin_index),
-            (soma_position[1] - 60) - 1000 * int(myelin_index + 1),
+        zpos = [
+            (soma_position[2] - 60) - 1000 * int(myelin_index),
+            (soma_position[2] - 60) - 1000 * int(myelin_index + 1),
         ]
-        zpos = [soma_position[2], soma_position[2]]
+        ypos = [soma_position[1], soma_position[1]]
         lens = [0, 1]
 
         # Interpolate the coordinates for the given location x along the segment
