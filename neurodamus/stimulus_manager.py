@@ -873,7 +873,7 @@ class SpatiallyUniformEField(BaseStim):
                 fields=self.fields,
                 ramp_up_time=self.ramp_up_time,
                 ramp_down_time=self.ramp_down_time,
-                dt=self.dt,
+                dt=0.5,
             )
             gid = target_point_list.gid
             if gid in self.stimList:
